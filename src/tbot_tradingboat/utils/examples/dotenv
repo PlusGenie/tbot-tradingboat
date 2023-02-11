@@ -1,0 +1,84 @@
+#-------------------------------------------------------------------
+# Global log level
+#-------------------------------------------------------------------
+TBOT_LOGLEVEL=DEBUG
+TBOT_LOGFILE=/tmp/tbot_log.txt
+# Set the IB INSYNC log level
+TBOT_IB_LOGLEVEL=INFO
+
+#-------------------------------------------------------------------
+# Configure Flask
+#-------------------------------------------------------------------
+TVWB_UNIQUE_KEY=83726efb-62b4-4bc5-bc22-f6379ac09c75
+TVWB_HTTPS_PORT=5000
+#TBOT_PRODUCTION=False
+
+#-------------------------------------------------------------------
+# Configure Redis
+#-------------------------------------------------------------------
+# Redis channel for pubsub
+TBOT_REDIS_PASSWORD=foobared
+# Redis Unix Domain Socket instead of TCP/IP
+TBOT_REDIS_UNIXDOMAIN_SOCK=/var/run/redis/redis-server.sock
+TBOT_REDIS_HOST=127.0.0.1
+TBOT_REDIS_PORT=6379
+# Choose either Redis Stream or Redis PubSub
+TBOT_USES_REDIS_STREAM=1
+# Read timeout for Redis Sub or Redis Stream
+TBOT_REDIS_READ_TIMEOUT_MS=40
+
+#-------------------------------------------------------------------
+# SQLITE3: Database for Alerts, Order
+#-------------------------------------------------------------------
+TBOT_DB_HOME=/home/tbot/tbot_sqlite3
+# tmpfs can be used for DB_OFFICE for fast operation such as /run, /tmp
+TBOT_DB_OFFICE=/tmp/tbot/tbot_sqlite3
+
+#-------------------------------------------------------------------
+# Interactive Brokers
+#-------------------------------------------------------------------
+TBOT_IBKR_PORT=7497
+TBOT_IBKR_CLIENTID=1
+TBOT_IBKR_IPADDR=127.0.0.1
+
+#-------------------------------------------------------------------
+# Debugging timestamp only for development
+#-------------------------------------------------------------------
+TBOT_VALIDATE_TIMESTAMP_DUPLICATES=False
+
+#-------------------------------------------------------------------
+# Discord Webhook
+#-------------------------------------------------------------------
+TBOT_DISCORD_WEBHOOK=https://discord.com/api/webhooks/NOTVALID/VKxHArK-48RIltzCIkWCwAmhzx8WcjZkLb3k3
+
+#-------------------------------------------------------------------
+# Telegram BOT
+#-------------------------------------------------------------------
+TBOT_TELEGRAM_TOKEN=5866600506:NOTVALIDLexKbVajIBM_Gnzol7oynS86E
+# Use utils/get_my_telegram_info.py to get CHAT_ID
+TBOT_TELEGRAM_CHAT_ID=5235531783
+
+#-------------------------------------------------------------------
+# TBOT PYTEST
+#-------------------------------------------------------------------
+
+# If you increase the number of observers such as Telegram, Discord,
+# or log level, you need to increase the sleep time accordingly.
+# The delay is also affected by whether the Redis server and
+# IB gateway are located in the intranet or internet.
+
+TBOT_PYTEST_IPADDR=http://localhost:5000/webhook
+# For example, the waiting time until a webhook hits the Alert Database is set to 2 seconds.
+TBOT_PYTEST_WAIT_FOR_ALERT_DATABASE=2 
+# For example,, the wait time until a webhook order is placed in the IB Gateway/TWS is 5 seconds.
+TBOT_PYTEST_WAIT_FOR_ORDER_DATABASE=5
+
+#-------------------------------------------------------------------
+# TBOT PROFILER
+#-------------------------------------------------------------------
+TBOT_PROFILER=True
+
+#-------------------------------------------------------------------
+# NGROK address for Flask HTTP GET for development
+#-------------------------------------------------------------------
+TBOT_NGROK=https://48c7-2-223-40-135.eu.ngrok.io

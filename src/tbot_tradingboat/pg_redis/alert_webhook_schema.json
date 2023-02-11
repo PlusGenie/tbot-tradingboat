@@ -1,0 +1,77 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome3",
+    "definitions": {
+        "Welcome3": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "timestamp": {
+                    "type": "integer"
+                },
+                "ticker": {
+                    "type": "string"
+                },
+                "timeframe": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "orderRef": {
+                    "type": "string"
+                },
+                "contract": {
+                    "type": "string"
+                },
+                "direction": {
+                    "type": "string"
+                },
+                "metrics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Metric"
+                    }
+                }
+            },
+            "required": [
+                "direction",
+                "key",
+                "metrics",
+                "orderRef",
+                "contract",
+                "ticker",
+                "timeframe",
+                "currency",
+                "timestamp"
+            ],
+            "title": "Welcome3"
+        },
+        "Metric": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "name",
+                "value"
+            ],
+            "title": "Metric"
+        }
+    }
+}
