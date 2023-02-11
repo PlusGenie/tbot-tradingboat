@@ -1,0 +1,43 @@
+[build-system]
+# PEP 518 https://www.python.org/dev/peps/pep-0518/
+# https://discuss.python.org/t/help-testing-experimental-features-in-setuptools/13821
+requires = [
+  "setuptools>=64",
+  "wheel",               # for bdist package distribution
+  "setuptools_scm>=6.4", # for automated versioning
+]
+
+# PEP 517 https://peps.python.org/pep-0517/
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+# include = []
+# exclude = ["tests"]
+namespaces = true
+
+[tool.setuptools_scm]
+version_scheme = "release-branch-semver"
+
+[project]
+name = "tbot_tradingboat"
+authors = [
+  { name="Sangwook Lee", email="aladdin@plusgenie.com" },
+]
+description = "The IBKR decoder on Tradingboat for Tradingview's Webhook"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: Dual Licensing (GPL and Commercial)",
+    "Operating System :: OS Independent",
+]
+dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "http://www.plusgenie.com"
+
