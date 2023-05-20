@@ -9,10 +9,9 @@ TBOT Is an algorithmic trading system that is designed to automate trading proce
 ### The Architecture of TBOT
 
 TBOT is built using a combination of the Subscriber of the Pub/Sub pattern and the Observer pattern. It uses the Subscriber to receive messages from a Redis Stream or Pub/Sub and the Observer to deliver messages to Interactive Brokers, message applications, and the watchdog. TBOT is designed to be a flexible and extensible system that can be customized to meet the needs of various trading strategies and workflows. The architecture of TBOT enables it to be easily integrated with other systems and services, making it a powerful tool for automating trading processes.
-![Uploading The-Architecture-of-TBOT.png…]()
 
+![The-Architecture-of-TBOT](https://github.com/PlusGenie/tbot-tradingboat/assets/1986788/17e80fd5-e740-4cf1-acb1-93bbe225e33b)
 
-![TBOT-on-Tradingboat-Design-pattern](https://user-images.githubusercontent.com/1986788/229383737-3149cc4e-42a5-4cf8-9d8f-f92f4444469d.png)
 
 ### TBOT on TradingBoat
 
@@ -73,6 +72,8 @@ pip install -e .
 
 ## Configuring the TBOT Application
 To configure the default environment variables for TBOT, copy the example dotenv file:
+
+![tbot_tradingboat_environment](https://github.com/PlusGenie/tbot-tradingboat/assets/1986788/39ae2f49-dc14-4c0c-8fe0-1fbb830343a8)
 
 ```console
 cp src/tbot_tradingboat/utils/examples/dotenv ~/.env
