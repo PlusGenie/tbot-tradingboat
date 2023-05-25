@@ -4,7 +4,22 @@
 
 ### The Purpose of TBOT
 
-TBOT Is an algorithmic trading system that is designed to automate trading processes. Its purpose is to receive trade signals and execute trades using a variety of patterns and technologies. TBOT is designed to be a flexible and extensible system that can be customized to meet the needs of various trading strategies and workflows. By automating trading processes, TBOT can reduce the amount of manual work required and enable traders to focus on higher-level tasks such as strategy development and risk management.
+The purpose of TBOT (TradingBoat) is to serve as a trading robot application that integrates with TradingView's strategy or indicator tools and Interactive Brokers' trading platform. TBOT acts as the control center within the broader TradingBoat platform, decoding alert messages received from TradingView and placing corresponding orders with Interactive Brokers.
+
+Here are the key aspects of TBOT's purpose and functionality:
+
+- **Integration with TradingView:** TBOT receives alert messages containing trading strategies or indicators from TradingView. These messages are sent via Redis Pub/Sub or Redis Stream, and TBOT decodes them in real-time.
+
+- **Interactive Brokers integration:** TBOT uses the ib_insync API to interact with Interactive Brokers' trading platform. It establishes a connection with Interactive Brokers to place orders based on the decoded alert messages.
+
+- **ib_insync:** TBOT uses the ib_insync API, which is a third-party Python library that provides a high-level interface to the official TWS API from Interactive Brokers. Ib_insync simplifies the complexities of the TWS API and offers a more Pythonic way to interact with Interactive Brokers.
+
+- **Order placement and tracking:** TBOT validates and places orders with Interactive Brokers based on the decoded alert messages. It supports various order types such as market orders, stop orders, limit orders, stop-limit orders, bracket orders, and attached orders. TBOT also tracks the status of placed orders and provides monitoring and management capabilities.
+
+- **Event handling and database management:** TBOT utilizes the event handling functionality of ib_insync to track order status updates and handle errors reported by Interactive Brokers. It uses a database (e.g., SQLite3) to store and manage information related to alerts, orders, and errors, allowing for effective order tracking and error handling.
+
+Overall, TBOT enhances the capabilities of Interactive Brokers by integrating with TradingView and providing back-testing and forward-testing functionalities. It enables traders to develop and execute trading strategies based on TradingView's tools while leveraging the execution capabilities of Interactive Brokers.
+
 
 ### The Architecture of TBOT
 
