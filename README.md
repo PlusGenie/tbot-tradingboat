@@ -36,6 +36,12 @@ TBOT serves as the message decoder and order placement tool, and is the brain of
 
 ![TBOT-on-TradingBoat](https://user-images.githubusercontent.com/1986788/226757087-16d96ad4-30f6-4310-bc70-eec3cc38dea9.png)
 
+<mark>If you install TradingBoat using Docker from [https://github.com/PlusGenie/ib-gateway-docker](https://github.com/PlusGenie/ib-gateway-docker), the TBOT application will be automatically installed within Docker containers.</mark>
+
+<mark>This page provides instructions for standalone installation of the TBOT application.</mark>
+
+<mark>If you are new to the TBOT application, we recommend considering the Docker installation from [https://github.com/PlusGenie/ib-gateway-docker](https://github.com/PlusGenie/ib-gateway-docker) to gain an overall understanding.</mark>
+
 
 ## Preparing for Installation of TBOT Application
 To begin, follow the steps below to download, install, set up environment variables, and run the TBOT application.
