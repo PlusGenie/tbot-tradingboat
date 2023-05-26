@@ -12,8 +12,6 @@ Here are the key aspects of TBOT's purpose and functionality:
 
 - **Interactive Brokers integration:** TBOT uses the ib_insync API to interact with Interactive Brokers' trading platform. It establishes a connection with Interactive Brokers to place orders based on the decoded alert messages.
 
-- **ib_insync:** TBOT uses the ib_insync API, which is a third-party Python library that provides a high-level interface to the official TWS API from Interactive Brokers. Ib_insync simplifies the complexities of the TWS API and offers a more Pythonic way to interact with Interactive Brokers.
-
 - **Order placement and tracking:** TBOT validates and places orders with Interactive Brokers based on the decoded alert messages. It supports various order types such as market orders, stop orders, limit orders, stop-limit orders, bracket orders, and attached orders. TBOT also tracks the status of placed orders and provides monitoring and management capabilities.
 
 - **Event handling and database management:** TBOT utilizes the event handling functionality of ib_insync to track order status updates and handle errors reported by Interactive Brokers. It uses a database (e.g., SQLite3) to store and manage information related to alerts, orders, and errors, allowing for effective order tracking and error handling.
