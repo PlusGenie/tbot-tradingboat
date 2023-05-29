@@ -131,6 +131,11 @@ All software provided here is intended for educational purposes only. Please be 
 
 * [Optimizing Execution Time: Improving TradingView to Interactive Brokers Delay with AWS Cloud](https://tbot.plusgenie.com/optimizing-execution-time-improving-tradingview-to-interactive-brokers-delay-with-aws-cloud)
 
+* [Link Interactive Brokers to TradingView via Ngrok](https://tbot.plusgenie.com/link-interactive-brokers-to-tradingview-via-ngrok-2)
+
+* [Converting TradingView PineScript Alerts into Interactive Brokers Orders](https://tbot.plusgenie.com/converting-tradingview-pinescript-alerts-into-interactive-brokers-orders)
+
 * [Decoding TradingView Alerts and Mastering ib_insync: A Comprehensive Guide](https://tbot.plusgenie.com/decoding-tradingview-alerts-and-mastering-ib_insync-a-comprehensive-guide)<br>
----
-* [The extensive instructions and invaluable insights, enabling you to effectively leverage TBOT for your trading activities](https://www.udemy.com/course/simple-and-fast-trading-robot-setup-with-docker-tradingview/)
+
+### Udemy
+* [Simple and Fast Trading Robot Setup with Docker, TradingView and Interactive Brokers](https://www.udemy.com/course/simple-and-fast-trading-robot-setup-with-docker-tradingview/)
