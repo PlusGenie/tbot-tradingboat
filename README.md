@@ -139,4 +139,4 @@ All software provided here is intended for educational purposes only. Please be 
 * [Decoding TradingView Alerts and Mastering ib_insync: A Comprehensive Guide](https://tbot.plusgenie.com/decoding-tradingview-alerts-and-mastering-ib_insync-a-comprehensive-guide)<br>
 
 ### Udemy
-* [Simple and Fast Trading Robot Setup with Docker, TradingView and Interactive Brokers](https://www.udemy.com/course/simple-and-fast-trading-robot-setup-with-docker-tradingview/)
+* [Simple and Fast Trading Robot Setup with Docker, TradingView and Interactive Brokers](https://www.udemy.com/course/simple-and-fast-trading-robot-setup-with-docker-tradingview/?referralCode=2447CB04079F504C0167)
