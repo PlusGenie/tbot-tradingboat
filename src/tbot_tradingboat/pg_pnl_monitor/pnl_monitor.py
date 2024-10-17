@@ -30,7 +30,7 @@ class PnLMonitorObserver(TbotObserver):
         self.ib.connect(
             host=shared.ibkr_addr,
             port=int(shared.ibkr_port),
-            clientId=int(shared.client_id) + 1,  # Use a different client ID
+            clientId= 1,  # Use a different client ID
         )
         logger.info("PnLMonitorObserver connected to IB.")
 
