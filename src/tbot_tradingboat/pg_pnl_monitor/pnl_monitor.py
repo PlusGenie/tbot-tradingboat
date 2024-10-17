@@ -1,38 +1,46 @@
-# File: tbot_tradingboat/pg_pnl_monitor/pnl_monitor.py
-
-from ib_insync import IB, PnL, MarketOrder
-from tbot_tradingboat.pg_decoder.tbot_observer import TbotObserver
+#!/usr/bin/env python3
+import sys
+import os
+import time
+from ib_insync import IB, PnL, MarketOrder, util
 from loguru import logger
-from tbot_tradingboat.utils.tbot_env import shared
-#import asyncio
 
-class PnLMonitorObserver(TbotObserver):
+# Configure logging
+logger.add("pnl_monitor.log", rotation="1 MB")
+
+# Configuration variables (can be set via environment variables)
+IBKR_HOST = os.environ.get('IBKR_HOST', '127.0.0.1')
+IBKR_PORT = int(os.environ.get('IBKR_PORT', '4002'))
+CLIENT_ID = int(os.environ.get('CLIENT_ID', '1')) + 1  # Ensure unique client ID
+PNL_THRESHOLD = float(os.environ.get('PNL_THRESHOLD', '-1.0'))  # Default to -1%
+ACCOUNT = os.environ.get('ACCOUNT', '')  # If not set, will use the first account
+
+class PnLMonitor:
     def __init__(self):
-        super().__init__()
         self.ib = IB()
-        self.loss_threshold = float(shared.pnl_threshold)  # Configurable loss threshold
+        self.loss_threshold = PNL_THRESHOLD
         self.beginning_balance = None
-        self.account = None
+        self.account = ACCOUNT
         self.action_taken = False
 
-    def open(self):
-        # Connect to IB
-        self.connect()
-        # Get the account ID
-        self.account = self.ib.managedAccounts()[0]
-        # Fetch the beginning account balance
-        self.fetch_beginning_balance()
-        # Subscribe to PnL updates
-        self.subscribe_to_pnl()
-
+    def run(self):
+        try:
+            self.connect()
+            self.fetch_beginning_balance()
+            self.subscribe_to_pnl()
+            self.ib.run()  # Start the event loop
+        except Exception as e:
+            logger.exception(f"Exception in PnLMonitor: {e}")
+        finally:
+            self.ib.disconnect()
+            logger.info("Disconnected from IB.")
 
     def connect(self):
-        self.ib.connect(
-            host=shared.ibkr_addr,
-            port=int(shared.ibkr_port),
-            clientId= 1,  # Use a different client ID
-        )
-        logger.info("PnLMonitorObserver connected to IB.")
+        logger.info(f"Connecting to IBKR at {IBKR_HOST}:{IBKR_PORT} with client ID {CLIENT_ID}")
+        self.ib.connect(host=IBKR_HOST, port=IBKR_PORT, clientId=CLIENT_ID)
+        if not self.account:
+            self.account = self.ib.managedAccounts()[0]
+        logger.info(f"Connected to IBKR. Using account: {self.account}")
 
     def fetch_beginning_balance(self):
         account_values = self.ib.accountValues(account=self.account)
@@ -46,14 +54,13 @@ class PnLMonitorObserver(TbotObserver):
             logger.info(f"Beginning account balance: {self.beginning_balance}")
         else:
             logger.error("Failed to retrieve the beginning account balance.")
-
+            sys.exit(1)
 
     def subscribe_to_pnl(self):
         # Subscribe to account-level PnL updates
         pnl = self.ib.reqPnL(self.account)
         pnl.updateEvent += self.on_pnl_update
         logger.info("Subscribed to PnL updates.")
-
 
     def on_pnl_update(self, pnl: PnL):
         """
@@ -84,6 +91,7 @@ class PnLMonitorObserver(TbotObserver):
         logger.info("Closing all positions and cancelling all orders.")
         # Close all positions
         positions = self.ib.positions(account=self.account)
+        close_orders = []
         for position in positions:
             contract = position.contract
             qty = position.position
@@ -91,26 +99,19 @@ class PnLMonitorObserver(TbotObserver):
             order = MarketOrder(action, abs(qty))
             trade = self.ib.placeOrder(contract, order)
             logger.info(f"Closing position: {action} {abs(qty)} {contract.symbol}")
+            close_orders.append(trade)
+
+        # Wait for orders to be filled
+        util.waitUntil(lambda: all(trade.isDone() for trade in close_orders), timeout=60)
+
         # Cancel all open orders
         open_orders = self.ib.openOrders()
         for order in open_orders:
             self.ib.cancelOrder(order)
             logger.info(f"Cancelling order: {order.orderId}")
-        # Optionally, disconnect or stop monitoring after action
-        self.ib.disconnect()
-        logger.info("Disconnected from IB after taking action.")
 
+        logger.info("All positions closed and open orders cancelled.")
 
-    def update(self, caller=None, *args, **kwargs):
-        """
-        Since we're using event-driven callbacks, the update method can remain empty.
-        """
-        pass
-
-    def close(self):
-        # Disconnect from IB
-        if self.ib.isConnected():
-            self.ib.disconnect()
-            logger.info("Disconnected from IB.")
-
-
+if __name__ == "__main__":
+    monitor = PnLMonitor()
+    monitor.run()
