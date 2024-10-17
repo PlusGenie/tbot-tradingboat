@@ -6,7 +6,7 @@ Tbot decodes TradingView webhook from Redis Pub/Sub and then send orders to ib_i
 __author__ = "Sangwook Lee"
 __copyright__ = "Copyright (C) 2023 Plusgenie Ltd"
 __license__ = "Dual-Licensing (GPL or Commercial License)"
-
+#Jengo was here
 
 import sys
 import socket
