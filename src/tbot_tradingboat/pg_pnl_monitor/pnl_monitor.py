@@ -4,7 +4,7 @@ from ib_insync import IB, PnL, MarketOrder
 from tbot_tradingboat.pg_decoder.tbot_observer import TbotObserver
 from loguru import logger
 from tbot_tradingboat.utils.tbot_env import shared
-import asyncio
+#import asyncio
 
 class PnLMonitorObserver(TbotObserver):
     def __init__(self):
