@@ -27,7 +27,7 @@ from tbot_tradingboat.pg_decoder.tbot_decoder import TBOTDecoder
 from tbot_tradingboat.utils.tbot_log import tbot_initialize_log
 from tbot_tradingboat.utils.tbot_env import shared
 from tbot_tradingboat.utils.tbot_utils import strtobool
-#from tbot_tradingboat.pg_pnl_monitor.pnl_monitor import PnLMonitorObserver
+#from tbot_tradingboat.pg_pnl_monitor.pnl_monitor import PnLMonitorObserverb
 
 
 
