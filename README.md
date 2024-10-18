@@ -112,6 +112,10 @@ By following these steps, you should now have the TBOT application installed and
 For more details on utilizing [a DotEnv file to control TradingBoat](https://tbot.plusgenie.com/how-to-use-a-dotenv-file-to-control-tradingboat-2), please refer to the corresponding chapter.
 
 
+## Kick off TradingView and Ngrok with TBOT-Wind:
+[TBOT-Wind](https://github.com/PlusGenie/tbot-wind) offers a solution by fetching historical data directly from Interactive Brokers and sending alerts directly to TBOT. This eliminates the need for both TradingView and Ngrok, effectively powering TradingBoat from within. [TBOT-Wind](https://github.com/PlusGenie/tbot-wind) serves as the "wind" that drives TradingBoat without external dependencies. However, TBOT-Wind assumes that you have a solid understanding of Python skills.
+
+
 ## TBOT Warning: For Educational Purposes Only
 
 <code style="color : orangered">
