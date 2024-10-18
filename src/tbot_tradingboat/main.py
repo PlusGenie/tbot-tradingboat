@@ -27,7 +27,7 @@ from tbot_tradingboat.pg_decoder.tbot_decoder import TBOTDecoder
 from tbot_tradingboat.utils.tbot_log import tbot_initialize_log
 from tbot_tradingboat.utils.tbot_env import shared
 from tbot_tradingboat.utils.tbot_utils import strtobool
-from tbot_tradingboat.pg_pnl_monitor.pnl_monitor import PnLMonitorObserver
+#from tbot_tradingboat.pg_pnl_monitor.pnl_monitor import PnLMonitorObserver
 
 
 
@@ -152,7 +152,7 @@ def main() -> int:
     observer_w = WatchObserver()
     observer_d = DiscordObserver()
     observer_t = TelegramObserver()
-    observer_pnl = PnLMonitorObserver()
+    #observer_pnl = PnLMonitorObserver()
 
 
     try:
@@ -160,7 +160,7 @@ def main() -> int:
         subject.attach(observer_w)
         subject.attach(observer_d)
         subject.attach(observer_t)
-        subject.attach(observer_pnl)
+       # subject.attach(observer_pnl)
     except Exception as err:
         logger.error(f"Error while attaching observers: {err}")
         sys.exit(1)
@@ -173,7 +173,7 @@ def main() -> int:
     subject.detach(observer_w)
     subject.detach(observer_d)
     subject.detach(observer_t)
-    subject.detach(observer_pnl)
+    #subject.detach(observer_pnl)
 
     return 0
 
