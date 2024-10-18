@@ -33,3 +33,12 @@ t_cmd="cd $TBOT_APP_HOME;\
 python src/tbot_tradingboat/main.py"
 
 $TBOT_APP_HOME/tbottmux/pg_tmux_main.py -a start -c "$t_cmd" -w 'TBOT'
+
+# Wait for main.py to initialize
+sleep 30
+
+# Start the pnl_monitor.py in 'PNL_MONITOR' window
+t_cmd="cd $TBOT_APP_HOME;\
+python pnl_monitor.py"
+
+$TBOT_APP_HOME/tbottmux/pg_tmux_main.py -a start -c "$t_cmd" -w 'PNL_MONITOR'
