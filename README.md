@@ -142,5 +142,10 @@ All software provided here is intended for educational purposes only. Please be 
 
 * [Decoding TradingView Alerts and Mastering ib_insync: A Comprehensive Guide](https://tbot.plusgenie.com/decoding-tradingview-alerts-and-mastering-ib_insync-a-comprehensive-guide)<br>
 
+### Books
+* [Book: Converting TradingView PineScript Alerts into Interactive Brokers Orders](https://tbot.plusgenie.com/book-converting-tradingview-pinescript-alerts-into-interactive-brokers-orders)
+* [Book: TBOT-Wind, A Guide to Custom Trading Indicators and Webhooks](https://tbot.plusgenie.com/book-tbot-wind-a-guide-to-custom-trading-indicators-and-webhooks)
+
+
 ### Udemy
 * [Simple and Fast Trading Robot Setup with Docker, TradingView and Interactive Brokers](https://www.udemy.com/course/simple-and-fast-trading-robot-setup-with-docker-tradingview/?referralCode=2447CB04079F504C0167)
